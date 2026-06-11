@@ -8,12 +8,12 @@ import { SignedIn, SignedOut, UserButton } from "@neondatabase/auth/react";
 export function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur-md">
-      <div className="mx-auto flex h-14 max-w-[1200px] items-center gap-4 px-4">
+      <div className="mx-auto flex h-16 w-full max-w-7xl items-center gap-3 px-4">
         <Link
           href="/"
           className="flex items-center gap-2 font-semibold tracking-tight text-foreground"
         >
-          <span className="flex size-8 items-center justify-center rounded-full bg-primary text-2xl aria-hidden">
+          <span className="flex size-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
             T
           </span>
           <span className="text-lg">Aurafeed</span>

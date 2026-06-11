@@ -10,7 +10,7 @@ export function SubmitPostForm() {
   const [state, action, pending] = useActionState(createPostAction, null);
 
   return (
-    <form action={action} className="mx-auto max-w-xl space-y-6">
+    <form action={action} className="space-y-6">
       <div className="space-y-2">
         <Label htmlFor="title">Title</Label>
         <Input
@@ -19,7 +19,7 @@ export function SubmitPostForm() {
           required
           minLength={4}
           placeholder="What’s on your mind?"
-          className="h-10"
+          className="h-11"
         />
       </div>
       <div className="space-y-2">
@@ -29,7 +29,7 @@ export function SubmitPostForm() {
           name="body"
           rows={8}
           placeholder="Optional details, links, or context…"
-          className="border-border bg-card"
+          className="min-h-40 border-border bg-card"
         />
       </div>
       <div className="space-y-2">
@@ -38,7 +38,7 @@ export function SubmitPostForm() {
           id="tags"
           name="tags"
           placeholder="webdev, react, nextjs"
-          className="h-10"
+          className="h-11"
         />
         <p className="text-xs text-muted-foreground">
           Comma-separated. Defaults to #webdev if empty.
@@ -51,7 +51,7 @@ export function SubmitPostForm() {
         </p>
       ) : null}
 
-      <Button type="submit" disabled={pending}>
+      <Button type="submit" disabled={pending} className="w-full sm:w-auto">
         {pending ? "Publishing..." : "Publish Post"}
       </Button>
     </form>

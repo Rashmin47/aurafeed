@@ -31,8 +31,8 @@ export function LeftSidebar({
   const sort = sp.get("sort");
 
   return (
-    <aside className="hidden w-52 shrink-0 lg:block">
-      <nav className="space-y-1 pr-2">
+    <aside className="space-y-6 lg:sticky lg:top-20 lg:w-52 lg:shrink-0">
+      <nav className="flex gap-2 overflow-x-auto rounded-2xl border border-border bg-card p-2 lg:block lg:space-y-1 lg:overflow-visible lg:border-0 lg:bg-transparent lg:p-0 lg:pr-2">
         {nav.map(({ href, label, icon: Icon, match }) => {
           const active =
             match === "home"
@@ -51,7 +51,7 @@ export function LeftSidebar({
               key={match}
               href={href}
               className={cn(
-                "flex items-center gap-3 rounded-lg border-l-2 border-transparent px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground",
+                "flex shrink-0 items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground lg:border-l-2 lg:px-3",
                 active && "border-primary bg-muted/60 text-foreground",
               )}
             >
@@ -66,14 +66,14 @@ export function LeftSidebar({
           );
         })}
       </nav>
-      <div className="mt-8">
+      <div className="rounded-2xl border border-border bg-card p-4 lg:mt-8 lg:border-0 lg:bg-transparent lg:p-0">
         <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
           Top Tags
         </p>
         <LeftTags items={tagsWithCounts} />
       </div>
       {showCta && (
-        <div className="mt-8">
+        <div className="rounded-2xl border border-border bg-card p-4 lg:mt-8 lg:border-0 lg:bg-transparent lg:p-0">
           <JoinCtaCard />
         </div>
       )}

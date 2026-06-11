@@ -13,7 +13,7 @@ export default async function CoreGroupLayout({
   return (
     <>
       <Navbar />
-      <div className="mx-auto flex max-w-[1200px] gap-8 px-4 pb-16 pt-2">
+      <div className="mx-auto grid w-full max-w-7xl gap-6 px-4 pb-16 pt-4 lg:grid-cols-[14rem_minmax(0,1fr)]">
         <LeftSidebar showCta={!user} tagsWithCounts={tags} />
         <div className="min-w-0 flex-1">{children}</div>
       </div>

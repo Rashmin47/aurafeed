@@ -4,13 +4,16 @@ import type { TrendingItem } from "@/lib/trending";
 
 export function RightTrending({ items }: { items: TrendingItem[] }) {
   return (
-    <Card className="border-border bg-card">
+    <Card className="border-border bg-card/90 shadow-sm">
       <CardHeader className="pb-3">
         <CardTitle className="text-base">Trending today</CardTitle>
       </CardHeader>
-      <CardContent className="space-y-3 pt-0">
+      <CardContent className="space-y-4 pt-0">
         {items.map((t) => (
-          <div key={t.rank} className="flex gap-3 text-sm">
+          <div
+            key={t.rank}
+            className="flex gap-3 rounded-xl border border-border/60 bg-background/60 p-3 text-sm"
+          >
             <span className="font-mono text-lg font-semibold text-muted-foreground">
               {t.rank}
             </span>

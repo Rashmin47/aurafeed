@@ -43,7 +43,7 @@ export function VoteButtons({
     <div className={stackClass}>
       <button
         onClick={() => vote(1)}
-        disabled
+        disabled={pending}
         className={cn(
           "rounded p-0.5 transition-colors hover:bg-muted disabled:opacity-50",
           userVote === 1
@@ -65,6 +65,7 @@ export function VoteButtons({
       </span>
       <button
         onClick={() => vote(-1)}
+        disabled={pending}
         className={cn(
           "rounded p-0.5 transition-colors hover:bg-muted disabled:opacity-50",
           userVote === 1

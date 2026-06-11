@@ -43,13 +43,17 @@ export function CommentComposer({
   }
 
   return (
-    <form ref={formRef} onSubmit={onSubmit} className="flex gap-3">
+    <form
+      ref={formRef}
+      onSubmit={onSubmit}
+      className="flex flex-col gap-3 sm:flex-row sm:items-start"
+    >
       <input type="hidden" name="postId" value={postId} />
       <input type="hidden" name="parentId" value={parentId ?? ""} />
       <UserAvatar
         user={user}
         size={compact ? "sm" : "default"}
-        className="mt-1 shrink-0"
+        className="shrink-0 sm:mt-1"
       />
       <div className="min-w-0 flex-1 space-y-2">
         <Textarea
@@ -64,7 +68,12 @@ export function CommentComposer({
             {error}
           </p>
         ) : null}
-        <Button type="submit" size="sm" disabled={pending}>
+        <Button
+          type="submit"
+          size="sm"
+          disabled={pending}
+          className="w-full sm:w-auto"
+        >
           {pending ? "Posting…" : parentId ? "Reply" : "Comment"}
         </Button>
       </div>

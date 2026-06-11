@@ -25,7 +25,7 @@ export function FeedSortTabs({
   ];
   return (
     <div className="mb-4 flex flex-wrap items-center justify-between gap-3 border-b border-border pb-3">
-      <div className="flex gap-1">
+      <div className="flex gap-1 rounded-full border border-border bg-card p-1 shadow-sm">
         {tabs.map(({ id, label, icon: Icon }) => {
           const active = current === id;
 
@@ -34,10 +34,10 @@ export function FeedSortTabs({
               key={id}
               href={hrefFor(id, tag)}
               className={cn(
-                "inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium transition-colors",
+                "inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-medium transition-colors",
                 active
-                  ? "bg-muted text-primary"
-                  : "text-muted-foreground hover:bg-muted/60 hover:text-foreground",
+                  ? "bg-primary text-primary-foreground shadow-sm"
+                  : "text-muted-foreground hover:bg-muted hover:text-foreground",
               )}
             >
               <Icon />

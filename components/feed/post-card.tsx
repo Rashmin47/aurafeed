@@ -28,7 +28,7 @@ export function PostCard({
   const primarySlug = post.tagSlugs[0];
   const primaryTag = primarySlug ? tagsBySlug.get(primarySlug) : undefined;
   return (
-    <article className="flex gap-2 rounded-xl border border-border bg-card p-3 transition-colors hover:border-border">
+    <article className="flex gap-3 rounded-2xl border border-border bg-card p-4 shadow-sm transition-all hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-md md:p-5">
       <VoteButtons
         target="post"
         targetId={post.id}
@@ -61,7 +61,7 @@ export function PostCard({
             <Link
               href={`/?tag=${encodeURIComponent(primaryTag.slug)}`}
               className={cn(
-                "inline-flex rounded-md px-2 py-0.5 text-xs font-medium",
+                "inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium",
                 "bg-tag-bg text-tag-text",
               )}
             >
