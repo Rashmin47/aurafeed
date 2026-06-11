@@ -1,7 +1,11 @@
 import { FeedSortTabs } from "@/components/feed/feed-sort-tabs";
 import { PostCard } from "@/components/feed/post-card";
 import { getSessionUser } from "@/lib/auth";
-import { batchAuthorsForIds, listPostsSorted } from "@/lib/db/queries";
+import {
+  batchAuthorsForIds,
+  listPostsSorted,
+  listTags,
+} from "@/lib/db/queries";
 import { FeedSort, Tag } from "@/lib/types";
 
 export default async function Home({
@@ -16,6 +20,8 @@ export default async function Home({
   const tagFilter = sp.tag?.toLowerCase();
   const sessionUser = await getSessionUser();
   const rows = await listPostsSorted(sort, tagFilter, sessionUser?.id);
+  const tags = await listTags();
+  const tagMap = new Map(tags.map((t) => [t.slug, t]));
   const authorIds = [...new Set(rows.map((r) => r.post.authorId))];
   const authorById = await batchAuthorsForIds(authorIds);
   if (sessionUser && authorById.has(sessionUser.id)) {
@@ -36,15 +42,18 @@ export default async function Home({
     );
   });
   return (
-    <div>
-      <div>
-        <FeedSortTabs />
+    <div className="flex gap-8">
+      <div className="min-w-0 flex-1">
+        <FeedSortTabs current={sort} tag={tagFilter} />
+        <div className="space-y-4">
+          {cards}
+          {rows.length === 0 && (
+            <p className="rounded-xl border border-border bg-card p-8 text-center text-sm text-muted-foreground">
+              No posts match this filter.
+            </p>
+          )}
+        </div>
       </div>
-      {rows.length === 0 && (
-        <p className="rounded-xl border border-border bg-card p-8 text-center text-sm text-muted-foreground">
-          No posts match this filter.
-        </p>
-      )}
     </div>
   );
 }
