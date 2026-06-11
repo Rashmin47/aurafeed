@@ -37,9 +37,10 @@ export function VoteButtons({
     ? "min-w-[2ch] text-center text-xs font-semibold tabular-nums"
     : "min-w-[1.5ch] text-center font-medium tabular-nums";
   return (
-    <div>
+    <div className={stackClass}>
       <button
         onClick={() => vote(1)}
+        disabled
         className={cn(
           "rounded p-0.5 transition-colors hover:bg-muted disabled:opacity-50",
           userVote === 1
@@ -50,7 +51,15 @@ export function VoteButtons({
       >
         <ChevronUp />
       </button>
-      <span>{score}</span>
+      <span
+        className={cn(
+          scoreClass,
+          userVote === 1 && "text-upvote",
+          userVote === -1 && "text-downvote",
+        )}
+      >
+        {score}
+      </span>
       <button
         onClick={() => vote(-1)}
         className={cn(
